@@ -8,10 +8,26 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import {Link} from 'react-router-dom'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown' 
 
 
-export default function MyNavBarDropdown() {
 
+export default function PlannerDropdown() {
+//JSON of dummy data for current plans
+  const DUMMY_DATA = [
+    {
+    'id' : 1,
+    'date-uploaded' : '2022-01-01',
+    'completed' : false,
+    'file' : 'http://geojson.io/#id=gist:adeel567/60d444f3bb2a106260927990df9ae294&map=22/55.93982/-3.29329'
+  },
+  {
+    'id' : 2,
+    'date-uploaded' : '2022-01-02',
+    'completed' : false,
+    'file' : 'http://geojson.io/#id=gist:adeel567/60d444f3bb2a106260927990df9ae294&map=22/55.93982/-3.29329'
+  }
+]
 
   
   const [open, setOpen] = React.useState(false);
@@ -53,15 +69,17 @@ export default function MyNavBarDropdown() {
 
       <div>
         <Button
-          color="inherit"
+          variant="contained"
           ref={anchorRef}
           id="composition-button"
           aria-controls={open ? 'composition-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
+          endIcon={<KeyboardArrowDownIcon />}
+
         >
-          Mode
+          Project Plans
         </Button>
         <Popper
           open={open}
@@ -87,8 +105,10 @@ export default function MyNavBarDropdown() {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem component={Link} to={"/Planner"}>Planner</MenuItem>
-                    <MenuItem component={Link} to={"/Worker"}>Worker</MenuItem>
+                    {DUMMY_DATA.map((job) => {
+                      return (<MenuItem>{"Job ID: " +job.id}</MenuItem>)
+                    })}
+
                     {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
                   </MenuList>
                 </ClickAwayListener>
