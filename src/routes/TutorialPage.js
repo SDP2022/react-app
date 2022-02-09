@@ -7,25 +7,25 @@ function TutorialPage() {
             'name' : 'Connecting to the PaintBot',
             'steps' : [ 
                 {
-                'img' : "https://live.staticflickr.com/2796/4398656115_ceb9a987ce_b.jpg",
+                'img' : "https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg",
                 'txt' : 'For example, this field can contain instrucions along with the above visual on how to complete a task such as connecting to the robot. '
                 },
                 {
-                    'img' : "",
+                    'img' : "https://images.pexels.com/photos/5270658/pexels-photo-5270658.jpeg",
                     'txt' : 'This is the next step'
                 }
 
             ]
         },
         {
-            'name' : 'Uploading a plan.',
+            'name' : 'Uploading a plan',
             'steps' : [ 
                 {
-                'img' : "https://live.staticflickr.com/2789/4399422648_1d4b799699_b.jpg",
+                'img' :  "https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg",
                 'txt' : 'For example, this field can contain instrucions along with the above visual on how to complete a task such as uploading a plan. '
                 },
                 {
-                    'img' : "",
+                    'img' :"https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg",
                     'txt' : 'This is the next step'
                 }
 
@@ -42,7 +42,7 @@ function TutorialPage() {
       sx={{ pt: 5, pb: 2 }}
       gutterBottom
     >
-      PaintED tutorial page
+      PaintED - Tutorial Page.
     </Typography>
 
     {/* Store Tutorials as nested array. With multiple tutorials having multiple steps */}

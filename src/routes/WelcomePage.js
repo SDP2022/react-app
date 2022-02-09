@@ -20,7 +20,7 @@ function WelcomePage(props) {
       </Typography>
 
       <div>
-        <Grid container spacing={2} justifyContent="center">
+        <Grid container spacing={2} justifyContent="center" sx={{pt:2}}>
           <Grid item xs align="center">
             <Button  component={Link} to="/planner" variant="contained" color="primary">
               Planner mode
