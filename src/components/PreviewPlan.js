@@ -3,9 +3,21 @@ import {Button} from '@mui/material';
 
 function PreviewPlan(props) {
     const disabled = (props.job === '') //hacky temp solution
+    const test = (props.job === '') ? "Preview plan (awaiting upload)" : "Preview plan" 
+
+    const viewPlan = () => {
+      console.log(props.data.id)
+
+      const stringy = encodeURIComponent((props.data.geoJSON))
+
+      console.log(stringy)
+
+      window.open("http://geojson.io/#data=data:application/json," + stringy)
+    }
+
     return (
-        <Button variant="contained" disabled={disabled} startIcon={<OpenInNewIcon />}>
-        Preview plan (awaiting upload)
+        <Button variant="contained" disabled={disabled} onClick={viewPlan} startIcon={<OpenInNewIcon />}>
+        {test}
       </Button>
     );
 }

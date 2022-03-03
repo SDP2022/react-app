@@ -1,13 +1,12 @@
-import Button from '@mui/material/Button';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Grow from '@mui/material/Grow';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import Stack from '@mui/material/Stack';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown' 
 import {FormControl, InputLabel, Menu, Select, Box} from '@mui/material'
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 //state is passed in from parent.
 export default function PlannerDropdown(props) {
@@ -29,10 +28,12 @@ export default function PlannerDropdown(props) {
     onChange={handleChange}
   >
     <MenuItem value=''><em>Create new project</em></MenuItem>
-    {props.plans.map((data) => 
+
+    {/* go through key,values of JSON object of details to do output */}
+    {Object.entries(props.plans).map((test) => 
     {
       return (
-        <MenuItem value={data.id}>Project with ID: {data.id}</MenuItem>
+        <MenuItem value={test[0]}>Project with ID: {test[0]}, uploaded on: {test[1]['date-uploaded']}</MenuItem>
       )
     })}
   </Select>
