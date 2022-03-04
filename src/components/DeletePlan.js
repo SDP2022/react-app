@@ -18,11 +18,7 @@ function DeletePlan(props) {
     }
 
     const disabled = (props.job === '') //hacky temp solution
-    const text = (props.job === '') ? "DELETE JOB (awaiting upload)" : "DELETE JOB"
-
-    const Input = styled('input')({
-      display: 'none',
-    });
+    const text = (props.job === '') ? "DELETE JOB (awaiting upload)" : "DELETE JOB";
 
 
 

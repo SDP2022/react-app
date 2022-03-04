@@ -89,6 +89,8 @@ export default function MyNavBarDropdown() {
                   >
                     <MenuItem component={Link} to={"/Planner"}>Planner</MenuItem>
                     <MenuItem component={Link} to={"/Worker"}>Worker</MenuItem>
+                    <MenuItem component={Link} to={"/ManualControl"}>Manual Control</MenuItem>
+
                     {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
                   </MenuList>
                 </ClickAwayListener>

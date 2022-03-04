@@ -3,7 +3,7 @@ import {Button} from '@mui/material';
 
 function PreviewPlan(props) {
     const disabled = (props.job === '') //hacky temp solution
-    const test = (props.job === '') ? "Preview plan (awaiting upload)" : "Preview plan" 
+    const test = (props.job === '') ? "Preview plan" : "Preview plan" 
 
     const viewPlan = () => {
       console.log(props.data.id)
@@ -16,7 +16,7 @@ function PreviewPlan(props) {
     }
 
     return (
-        <Button variant="contained" disabled={disabled} onClick={viewPlan} startIcon={<OpenInNewIcon />}>
+        <Button variant="contained" disabled={disabled} onClick={viewPlan} startIcon={<OpenInNewIcon />} fullWidth> 
         {test}
       </Button>
     );
