@@ -16,6 +16,9 @@ const [completedChange, setCompleted] = React.useState(false);
 const [jobs, setJobs] = React.useState([]);
 const [started, setStarted] = React.useState(false);
 
+//todo move socket up here
+
+
 
 React.useEffect(() => {
   fetch('https://sdp2022-7afa1-default-rtdb.europe-west1.firebasedatabase.app/jobs.json')
@@ -53,7 +56,7 @@ React.useEffect(() => {
 
         <Stack direction="row" spacing={2}>
           <ControlButton started={started} setStarted={setStarted} job={job}/>
-          <StartJob job={job} completedChange={completedChange} setCompleted={setCompleted} data={jobs[job]}/>
+          <StartJob job={job} started={started} setStarted={setStarted} data={jobs[job]}/>
         </Stack>
 
       </Stack>

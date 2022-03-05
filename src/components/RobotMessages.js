@@ -1,55 +1,47 @@
+import * as React from 'react'
 import {Alert} from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useState } from 'react';
-import {Subscriber, RosConnect, useMsg} from 'roslib-reactjs'
+import { useState, useEffect } from 'react';
 
 function RobotMessages(props) {
 
-    // return (
-    //     <RosConnect
-    //         url="ws://localhost:9090"
-    //         autoconnect
-    //         timeout={1000}>
+    const [severity, setSeverity] = useState("info")
+    const [message, setMessage] = useState("Messages will appear here once connected");
 
-    //             <Subscriber
-    //                 name="/chatter"
-    //                 type="std_msgs/String"
-    //                 rate={10.0}
-    //                 queue_size={10}>
-    //                     <Alert severity={"info"} component="span" fullWidth>
-    //                         {console.log(useMsg())}
-    //                     </Alert>
 
-    //             </Subscriber>
-    //     </RosConnect>
+    var ROSLIBR = window.ROSLIB;
 
-    // )
+    var ros = new ROSLIBR.Ros({
+        url: 'ws://localhost:9090'
+    });
 
-    // const handler = (event) => {
-    // }
+    var chatter_listener = new ROSLIBR.Topic({
+        ros : ros,
+        name : "web_messages",
+        messageType : 'std_msgs/String'
+    });
 
-    const text = "Messages will go here"
-    const serverity = "info";
+    chatter_listener.subscribe(function(m) {
+        
+        const parsed = JSON.parse(m.data)
+        console.log(parsed)
+
+
+        //get JSON from websocket, parse and change state
+        setSeverity(parsed['alert_type'])
+        setMessage(parsed['message'])
+
+    
+    })
+
+   // const text = "Messages will go here"
+   // const sesrverity = "info";
 
     return (
-        <Alert severity={serverity} component="span" fullWidth>
-          {text}
+        <Alert severity={severity} component="span" fullWidth>
+          {message}
         </Alert>
     );
-
-    // var ros = new ROSLIB.Ros({
-    //     url : 'ws://localhost:9090'
-    //   });
-
-    // var txt_listener = new ROSLIB.Topic({
-    // ros : ros,
-    // name : 'talker',
-    // messageType : 'std_msgs/String'
-    // });
-
-    // txt_listener.subscribe(function(m) {
-    //     console.log(m.data)
-    // });
 
 }
 export default RobotMessages;
