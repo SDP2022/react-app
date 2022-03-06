@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { Stack, Typography, Button,  } from "@mui/material";
+import Pen from '../components/Pen';
+import Stop from '../components/Stop';
+import Controller from '../components/Controller';
+
 
 
 
@@ -15,12 +19,31 @@ function ManualControl(props) {
             variant="h4"
             align="center"
             color="textPrimary"
-            sx={{ pt: 5, pb: 2 }}
+            sx={{ pt: 5, pb: 5 }}
             gutterBottom
           >
             PaintED - Manual Control
           </Typography>
+
+          <Stack justifyContent="space-evenly" direction="row" spacing={2}>
+            <Controller></Controller>
+
+
+            <Stack justifyContent="center" spacing={2}>
+              <Stack justifyContent="center" direction="row" spacing={2}>
+                <Pen kind={'up'} fullwidth></Pen>
+                <Pen kind={'down'} fullwidth></Pen>
+              </Stack>
+              <Stop></Stop>
+
+            </Stack>
+
+          </Stack>
+
+
+
         </div>
+        
       );
     }
 export default ManualControl;
