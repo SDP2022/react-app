@@ -18,11 +18,11 @@ function UploadPlan(props) {
       fileReader.readAsText(event.target.files[0], "UTF-8");
       fileReader.onload = e => {
         console.log(e.target.result)
-        console.log((new Date()).toISOString().split('T')[0])
+        const date = new Date().toISOString().slice(0, 10);
 
         const job_json = {
           'completed' : 'false',
-          'date-uploaded' : "2023-06-09",
+          'date-uploaded' : date,
           'geoJSON' : (e.target.result)
         }
 

@@ -8,7 +8,7 @@ function Controller(props) {
         console.log(event)
     }
     return (
-        <Joystick size={100} move={test} > </Joystick>
+        <Joystick size={100} move={test} stickColor={"#1A76D2"} > </Joystick>
     )
 }
 export default Controller;
