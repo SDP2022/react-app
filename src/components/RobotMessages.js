@@ -12,7 +12,7 @@ function RobotMessages(props) {
     var ROSLIBR = window.ROSLIB;
 
     var ros = new ROSLIBR.Ros({
-        url: 'ws://localhost:9090'
+        url: 'ws://martinmillers.inf.ed.ac.uk:9090'
     });
 
     var chatter_listener = new ROSLIBR.Topic({

@@ -18,6 +18,7 @@ const [started, setStarted] = React.useState(false);
 
 //todo move socket up here
 
+ var ROSLIBR = window.ROSLIB;
 
 
 React.useEffect(() => {

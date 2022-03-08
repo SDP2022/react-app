@@ -5,32 +5,39 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function Pen(props) {
 
-    // var ROSLIBR = window.ROSLIB;
+  const iconName = props.kind === 'up' ? 'ArrowDropUpIcon' : 'ArrowDropDownIcon';
+  const text = props.kind === 'up' ? 'Pen up' : 'Pen down';
+  const action = props.kind === 'down';
 
-    // var ros = new ROSLIBR.Ros({
-    //     url: 'ws://localhost:9090'
-    // });
+    var ROSLIBR = window.ROSLIB;
 
-    // var job_publisher = new ROSLIBR.Topic({
-    //     ros : ros,
-    //     name : "/start_job",
-    //     messageType : 'std_msgs/String'
-    // });
+    var ros = new ROSLIBR.Ros({
+        url: 'ws://martinmillers.inf.ed.ac.uk:9090'
+    });
 
-    // var job_message = new ROSLIBR.Message({data : JSON.stringify(props.data)})
+    var pen_client = new ROSLIBR.Service({
+      ros: ros,
+      name: '/pen_service',
+      serviceType: 'PenCommand'
+    })
 
-    // const handler = (event) => {
-    //     job_publisher.publish(job_message)
-    //     console.log(job_message)
-    // }
+    var request = new ROSLIBR.ServiceRequest({
+      pen_down : action
+    })
 
-    const iconName = props.kind === 'up' ? 'ArrowDropUpIcon' : 'ArrowDropDownIcon';
-    const text = props.kind === 'up' ? 'Pen up' : 'Pen down';
+    const handler = (event) => {
+
+      pen_client.callService(request, function(result) {
+        console.log(result.status)
+      })
+    }
+
+
 
 
 
     return (
-        <Button variant="contained"  startIcon={props.kind === 'up' ? <ArrowDropUpIcon/> : <ArrowDropDownIcon/>} component="span">
+        <Button onClick={handler} variant="contained"  startIcon={props.kind === 'up' ? <ArrowDropUpIcon/> : <ArrowDropDownIcon/>} component="span">
           {text}
         </Button>
     );
