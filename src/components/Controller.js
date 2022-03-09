@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Joystick } from 'react-joystick-component';
 
 
 function Controller(props) {
+    console.log(process.env.REACT_APP_ROSBRIDGE_HOSTNAME);
 
     var ROSLIBR = window.ROSLIB;
 
 
     var ros = new ROSLIBR.Ros({
-        url: 'ws://martinmillers.inf.ed.ac.uk:9090'
+        url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
     });
 
     var move_publisher = new ROSLIBR.Topic({

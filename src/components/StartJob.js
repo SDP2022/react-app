@@ -7,7 +7,7 @@ function StartJob(props) {
     var ROSLIBR = window.ROSLIB;
 
     var ros = new ROSLIBR.Ros({
-        url: 'ws://martinmillers.inf.ed.ac.uk:9090'
+        url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
     });
 
     var job_publisher = new ROSLIBR.Topic({
