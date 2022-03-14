@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 function RobotMessages(props) {
 
     const [severity, setSeverity] = useState("info")
-    const [message, setMessage] = useState("Messages will appear here once connected");
+    const [message, setMessage] = useState("Messages will appear here once available.");
 
 
     var ROSLIBR = window.ROSLIB;
