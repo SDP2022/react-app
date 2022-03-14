@@ -26,7 +26,7 @@ function ManualControl(props) {
             PaintED - Manual Control
           </Typography>
 
-          <Stack justifyContent="space-evenly"  spacing={5}>
+          <Stack justifyContent="space-evenly"  spacing={5}  sx={{pb: 15 }}>
             <RobotMessages/>
 
             <Stack justifyContent="space-evenly" direction="row" spacing={2}>
