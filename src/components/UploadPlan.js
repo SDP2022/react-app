@@ -21,7 +21,7 @@ function UploadPlan(props) {
         const date = new Date().toISOString().slice(0, 10);
 
         const job_json = {
-          'completed' : 'false',
+          'completed' : false,
           'date-uploaded' : date,
           'geoJSON' : (e.target.result)
         }
@@ -63,7 +63,7 @@ function UploadPlan(props) {
         <Button variant="contained" color={color} component="span" startIcon={<UploadFileIcon />} fullWidth>
           {text}
         </Button>
-        <Input id="contained-button-file" type="file" onChange={handler} />
+        <Input id="contained-button-file" type="file" accept=".geojson" onChange={handler} />
 
 
       </label>
