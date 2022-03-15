@@ -1,5 +1,7 @@
 import {Typography, Stack} from '@mui/material'
 import TutorialCard from '../components/TutorialCard'
+import VideoTutorial from '../components/VideoTutorial'
+
 
 function TutorialPage() {
     const DUMM_TUTORIALS = [
@@ -39,7 +41,7 @@ function TutorialPage() {
       variant="h4"
       align="center"
       color="textPrimary"
-      sx={{ pt: 5, pb: 2 }}
+      sx={{ pt: 5, pb: 3 }}
       gutterBottom
     >
       PaintED - Tutorial Page.
@@ -47,6 +49,9 @@ function TutorialPage() {
 
     {/* Store Tutorials as nested array. With multiple tutorials having multiple steps */}
     <Stack spacing={5}>
+
+        <VideoTutorial></VideoTutorial>
+
         {DUMM_TUTORIALS.map((tut) => {
         return (<TutorialCard name= {tut.name} steps={tut.steps}/>)})
     }

@@ -30,8 +30,6 @@ React.useEffect(() => {
     });
   }, [job,completedChange]); 
 
-
-    
     return (
 
     <div>
