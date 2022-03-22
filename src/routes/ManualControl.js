@@ -30,12 +30,12 @@ function ManualControl(props) {
             <RobotMessages/>
 
             <Stack justifyContent="space-evenly" direction="row" spacing={2}>
-              <Controller></Controller>
+              <Controller ros={ros}></Controller>
 
               <Stack justifyContent="center" spacing={2}>
                 <Stack justifyContent="center" direction="row" spacing={2}>
-                  <Pen kind={'up'} fullwidth></Pen>
-                  <Pen kind={'down'} fullwidth></Pen>
+                  <Pen kind={'up'} ros={ros} fullwidth></Pen>
+                  <Pen kind={'down'} ros={ros} fullwidth></Pen>
                 </Stack>
                 <Stop></Stop>
 
