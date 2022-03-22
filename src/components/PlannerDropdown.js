@@ -33,7 +33,7 @@ export default function PlannerDropdown(props) {
     {Object.entries(props.plans).map((test) => 
     {
       return (
-        <MenuItem value={test[0]}>Project ID: {test[0]}, uploaded on: {test[1]['date-uploaded']}, completed: {test[1]['completed'].toString()}</MenuItem>
+        <MenuItem value={test[0]} key={test[0]}>Project ID: {test[0]}, uploaded on: {test[1]['date-uploaded']}, completed: {test[1]['completed'].toString()}</MenuItem>
       )
     })}
   </Select>

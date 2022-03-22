@@ -15,14 +15,14 @@ function MyNavBar(props) {
     return (
         <AppBar position="relative">
         <Container maxWidth="lg">
-          <Toolbar disableGutters="true">
+          <Toolbar>
           <Box display='flex' flexGrow={1}>
             <Typography variant="h6" nowrap="false" sx={{ mr: 2 }}>
               PaintED
             </Typography>
-            <MenuItem component={Link} to="/" >Home</MenuItem>
+            <MenuItem component={Link} key={"home"} to="/" >Home</MenuItem>
             {props.pages.map((page) => (
-                      <MenuItem component={Link} to={"/" +page} >{page}</MenuItem>
+                      <MenuItem component={Link} to={"/" +page} key={page}>{page}</MenuItem>
                   ))}
             </Box>
 

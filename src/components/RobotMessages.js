@@ -34,11 +34,19 @@ function RobotMessages(props) {
     
     })
 
+    ros.on('connection', function() {
+        console.log('Connected to websocket server.');
+    });
+    
+    ros.on('error', function(error) {
+        console.log('Error connecting to websocket server: ', error);
+    });
+
    // const text = "Messages will go here"
    // const sesrverity = "info";
 
     return (
-        <Alert severity={severity} component="span" fullWidth>
+        <Alert severity={severity} component="span">
           {message}
         </Alert>
     );

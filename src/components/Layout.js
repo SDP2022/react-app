@@ -10,7 +10,7 @@ import {
 import MyNavBar from "./MyNavBar";
 
 function Layout(props) {
-    const pages = ['Tutorial', 'Support']
+    const pages = ['Tutorial']
     const dropdown = ['Planner','Worker']
 
   return (

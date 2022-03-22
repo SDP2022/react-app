@@ -1,7 +1,6 @@
 import {Button, ToggleButton} from '@mui/material';
 import { useState } from 'react';
-import CancelIcon from '@mui/icons-material/Cancel';
-
+import DangerousIcon from '@mui/icons-material/Dangerous';
 function Pen(props) {
 
     // var ROSLIBR = window.ROSLIB;
@@ -27,8 +26,8 @@ function Pen(props) {
 
 
     return (
-        <Button variant="contained" color='error' startIcon={<CancelIcon/>} component="span">
-          Emergency Stop
+        <Button variant="contained" color='error' startIcon={<DangerousIcon/>} component="span">
+          Emergency Warning
         </Button>
     );
 }
