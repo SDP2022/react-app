@@ -27,7 +27,7 @@ function StartJob(props) {
     //data being sent to the robot: id and plan
     var job_message = new ROSLIBR.Message({
         job_id : props.job,
-        job_data : JSON.stringify(props.data)
+        job_data : JSON.stringify(props.data.geoJSON)
     })
 
     var pause_message = new ROSLIBR.Message({
@@ -55,13 +55,13 @@ function StartJob(props) {
     var disabled = (props.state === 1 || props.state === 5 ||  props.job === '') //can't start if not ready
 
 
-    if (props.state == 0 || props.state == 1 || props.state === 5) { //waiting
+    if (props.state == 0 || props.state === 5) { //waiting
         return (
             <Button variant="contained" onClick={start_handler} color={'success'} startIcon={<PlayCircleOutlineIcon/>} disabled={disabled} component="span"  fullWidth>
               Begin
             </Button>
         ); 
-    } else if (props.state == 2) { //running
+    } else if (props.state == 2 || props.state == 1) { //running
         return (
             <Button variant="contained" onClick={pause_handler} color={'warning'} startIcon={<PauseCircleIcon/>} disabled={disabled} component="span"  fullWidth>
               Pause
