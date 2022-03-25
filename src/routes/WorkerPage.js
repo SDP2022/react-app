@@ -14,13 +14,42 @@ function Worker(props) {
 const [job, setJob] = React.useState('');
 const [completedChange, setCompleted] = React.useState(false);
 const [jobs, setJobs] = React.useState([]);
-const [started, setStarted] = React.useState(false);
+//const [started, setStarted] = React.useState(false);
+//initial state is waiting
+const [state, setState] = React.useState(0);
 
 //todo move socket up here
 
  var ROSLIBR = window.ROSLIB;
 
+ var ros = new ROSLIBR.Ros({
+  url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
+});
 
+
+var state_client = new ROSLIBR.Service({
+  ros: ros,
+  name: '/job_status_service',
+  serviceType: 'JobStatusCommand'
+})
+
+var request = new ROSLIBR.ServiceRequest({
+  status : true
+})
+
+
+var state_listener = new ROSLIBR.Topic({
+  ros : ros,
+  name : "state",
+  messageType : 'State'
+});
+
+state_listener.subscribe(function(result) {
+  setState(result.as_state)
+})
+
+
+//fetches job data from firebase
 React.useEffect(() => {
   fetch('https://sdp2022-7afa1-default-rtdb.europe-west1.firebasedatabase.app/jobs.json')
     .then(results => results.json())
@@ -29,6 +58,20 @@ React.useEffect(() => {
       setJobs(yeet)
     });
   }, [job,completedChange]); 
+
+
+//gets state
+React.useEffect(() => {
+  state_client.callService(request, function(result) {
+    if (result.job_id !== "-1") {
+      setJob(result.job_id)
+    }
+    setState(result.status)
+    console.log(result.status)
+    console.log(result.job_id)
+
+    })
+})
 
     return (
 
@@ -54,8 +97,8 @@ React.useEffect(() => {
         </Stack>
 
         <Stack direction="row" spacing={2}>
-          <ControlButton started={started} setStarted={setStarted} job={job}/>
-          <StartJob job={job} started={started} setStarted={setStarted} data={jobs[job]}/>
+          <ControlButton state={state} job={job}/>
+          <StartJob job={job} state={state} data={jobs[job]}/>
         </Stack>
 
       </Stack>
