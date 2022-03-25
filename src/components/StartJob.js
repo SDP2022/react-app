@@ -23,13 +23,6 @@ function StartJob(props) {
         messageType : "painted/State"
     });
 
-
-    //data being sent to the robot: id and plan
-    var job_message = new ROSLIBR.Message({
-        job_id : props.job,
-        job_data : JSON.stringify(props.data.geoJSON)
-    })
-
     var pause_message = new ROSLIBR.Message({
         as_state: 3
     })
@@ -39,6 +32,13 @@ function StartJob(props) {
     })
 
     const start_handler = (event) => {
+
+        //data being sent to the robot: id and plan
+        var job_message = new ROSLIBR.Message({
+            job_id : props.job,
+            job_data : props.data.geoJSON
+        })
+
         job_publisher.publish(job_message)
         console.log(job_message)
     }
