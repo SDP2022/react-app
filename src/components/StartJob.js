@@ -14,7 +14,7 @@ function StartJob(props) {
     var job_publisher = new ROSLIBR.Topic({
         ros : ros,
         name : "/start_job",
-        messageType : 'painted/Job'
+        messageType : "Job"
     });
 
     var state_publisher = new ROSLIBR.Topic({
@@ -30,11 +30,11 @@ function StartJob(props) {
         job_data : JSON.stringify(props.data)
     })
 
-    var pause = new ROSLIBR.Message({
+    var pause_message = new ROSLIBR.Message({
         as_state: 3
     })
 
-    var resume = new ROSLIBR.Message({
+    var resume_message = new ROSLIBR.Message({
         as_state: 2
     })
 
@@ -44,12 +44,12 @@ function StartJob(props) {
     }
 
     const pause_handler = (event) => {
-        state_publisher.publish(job_message)
-        console.log(job_message)
+        state_publisher.publish(pause_message)
+        console.log(pause_message)
     }
     const resume_handler = (event) => {
-        state_publisher.publish(job_message)
-        console.log(job_message)
+        state_publisher.publish(resume_message)
+        console.log(resume_message)
     }
 
     var disabled = (props.state === 1 || props.state === 5 ||  props.job === '') //can't start if not ready
