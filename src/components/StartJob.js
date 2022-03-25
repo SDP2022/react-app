@@ -20,7 +20,7 @@ function StartJob(props) {
     var state_publisher = new ROSLIBR.Topic({
         ros : ros,
         name : "/state",
-        messageType : 'painted/State'
+        messageType : "State"
     });
 
 
