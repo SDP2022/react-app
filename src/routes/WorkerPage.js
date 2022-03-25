@@ -41,7 +41,7 @@ var request = new ROSLIBR.ServiceRequest({
 var state_listener = new ROSLIBR.Topic({
   ros : ros,
   name : "state",
-  messageType : 'State'
+  messageType : 'painted/State'
 });
 
 state_listener.subscribe(function(result) {

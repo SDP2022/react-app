@@ -14,13 +14,13 @@ function StartJob(props) {
     var job_publisher = new ROSLIBR.Topic({
         ros : ros,
         name : "/start_job",
-        messageType : "Job"
+        messageType : "painted/Job"
     });
 
     var state_publisher = new ROSLIBR.Topic({
         ros : ros,
         name : "/state",
-        messageType : "State"
+        messageType : "painted/State"
     });
 
 

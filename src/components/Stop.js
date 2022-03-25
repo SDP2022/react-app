@@ -12,7 +12,7 @@ function Pen(props) {
     var job_publisher = new ROSLIBR.Topic({
         ros : ros,
         name : "/start_job",
-        messageType : 'std_msgs/String'
+        messageType : "painted/Job"
     });
 
     var job_message = new ROSLIBR.Message({data : JSON.stringify(props.data)})
