@@ -5,6 +5,8 @@ function CameraInternal(props) {
         <Image
         src={props.img}
         aspectRatio={1.33}
+        disableSpinner={props.spinner}
+        disableTransition={props.transition}
         />
     );
 }

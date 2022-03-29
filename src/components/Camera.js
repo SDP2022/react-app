@@ -6,7 +6,13 @@ function Camera(props) {
 
     const [img, setImg] = useState("https://cataas.com/cat")
 
+    //only show animations when loading
+    var spinner = true;
+    var transition = true;
+
+    //load connection and subscribe to images only once
     useEffect(() => {
+        console.log("NEEEW")
         var ROSLIBR = window.ROSLIB;
 
         var ros = new ROSLIBR.Ros({
@@ -22,11 +28,15 @@ function Camera(props) {
         camera_listener.subscribe(function(message) {
             setImg("data:image/jpeg;base64," + message.data);
         })
-    })
+        transition = false;
+        spinner = false;
+    },[])
 
     return (
         <CameraInternal
-        img={img}>
+        img={img}
+        spinner = {spinner}
+        transition = {transition}>
 
         </CameraInternal>
     );

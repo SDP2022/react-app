@@ -7,40 +7,45 @@ function RobotMessages(props) {
 
     const [severity, setSeverity] = useState("info")
     const [message, setMessage] = useState("Messages will appear here once available.");
-
-
     var ROSLIBR = window.ROSLIB;
 
-    var ros = new ROSLIBR.Ros({
-        url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
-    });
+    useEffect( () => {
+        var ros = new ROSLIBR.Ros({
+            url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
+        });
 
-    var chatter_listener = new ROSLIBR.Topic({
-        ros : ros,
-        name : "web_messages",
-        messageType : 'std_msgs/String'
-    });
+        var chatter_listener = new ROSLIBR.Topic({
+            ros : ros,
+            name : "web_messages",
+            messageType : 'std_msgs/String'
+        });
 
-    chatter_listener.subscribe(function(m) {
+        chatter_listener.subscribe(function(m) {
+            
+            const parsed = JSON.parse(m.data)
+
+            //get JSON from websocket, parse and change state
+            setSeverity(parsed['alert_type'])
+            setMessage(parsed['message'])
+
         
-        const parsed = JSON.parse(m.data)
+        })
 
-        //get JSON from websocket, parse and change state
-        setSeverity(parsed['alert_type'])
-        setMessage(parsed['message'])
+        ros.on('connection', function() {
+            setSeverity("success")
+            setMessage("A connection was established to the robot.")
 
-    
-    })
+            console.log('Connected to websocket server.');
+        });
+        
+        ros.on('error', function(error) {
+            setSeverity("error")
+            setMessage("A connection to the robot could not be established.")
+            console.log('Error connecting to websocket server: ', error);
+        });
 
-    ros.on('connection', function() {
-        console.log('Connected to websocket server.');
-    });
-    
-    ros.on('error', function(error) {
-        setSeverity("error")
-        setMessage("A connection to the robot could not be established.")
-        console.log('Error connecting to websocket server: ', error);
-    });
+    },[])
+ 
 
    // const text = "Messages will go here"
    // const sesrverity = "info";

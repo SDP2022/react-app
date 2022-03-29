@@ -18,13 +18,13 @@ function Controller(props) {
     });
 
 
-    ros.on('connection', function() {
-        console.log('Connected to websocket server.');
-    });
+    // ros.on('connection', function() {
+    //     console.log('Connected to websocket server.');
+    // });
     
-    ros.on('error', function(error) {
-        console.log('Error connecting to websocket server: ', error);
-    });
+    // ros.on('error', function(error) {
+    //     console.log('Error connecting to websocket server: ', error);
+    // });
 
     
 
