@@ -13,8 +13,8 @@ function Camera(props) {
 
     var camera_listener = new ROSLIBR.Topic({
         ros : ros,
-        name : "web_messages",
-        messageType : 'std_msgs/String'
+        name : "/camera/image/compressed",
+        messageType : 'sensor_msgs/CompressedImage'
     });
 
     camera_listener.subscribe(function(message) {
