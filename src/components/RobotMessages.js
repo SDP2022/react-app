@@ -24,8 +24,6 @@ function RobotMessages(props) {
     chatter_listener.subscribe(function(m) {
         
         const parsed = JSON.parse(m.data)
-        console.log(parsed)
-
 
         //get JSON from websocket, parse and change state
         setSeverity(parsed['alert_type'])
@@ -39,6 +37,8 @@ function RobotMessages(props) {
     });
     
     ros.on('error', function(error) {
+        setSeverity("error")
+        setMessage("A connection to the robot could not be established.")
         console.log('Error connecting to websocket server: ', error);
     });
 

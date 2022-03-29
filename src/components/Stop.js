@@ -3,30 +3,34 @@ import { useState } from 'react';
 import DangerousIcon from '@mui/icons-material/Dangerous';
 function Stop(props) {
 
-    var ROSLIBR = window.ROSLIB;
+  var ROSLIBR = window.ROSLIB;
 
-    var ros = new ROSLIBR.Ros({
+  var ros = new ROSLIBR.Ros({
       url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
-    });
+  });
 
-    var job_publisher = new ROSLIBR.Topic({
-        ros : ros,
-        name : "/start_job",
-        messageType : "painted/Job"
-    });
+  var warning_client = new ROSLIBR.Service({
+    ros: ros,
+    name: '/buzzer_service',
+    serviceType: 'BuzzerCommand'
+  })
 
-    var job_message = new ROSLIBR.Message({data : JSON.stringify(props.data)})
+  var request = new ROSLIBR.ServiceRequest({
+    beep : 1
+  })
 
-    const handler = (event) => {
-        job_publisher.publish(job_message)
-        console.log(job_message)
-    }
+  const handler = (event) => {
+
+    warning_client.callService(request, function(result) {
+      console.log(result.status)
+    })
+  }
 
 
 
 
     return (
-        <Button variant="contained" color='error' startIcon={<DangerousIcon/>} component="span">
+        <Button onClick={handler} variant="contained" color='error' startIcon={<DangerousIcon/>} component="span">
           Emergency Warning
         </Button>
     );
