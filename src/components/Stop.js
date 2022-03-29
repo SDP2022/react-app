@@ -1,7 +1,7 @@
 import {Button, ToggleButton} from '@mui/material';
 import { useState } from 'react';
 import DangerousIcon from '@mui/icons-material/Dangerous';
-function Pen(props) {
+function Stop(props) {
 
     var ROSLIBR = window.ROSLIB;
 
@@ -31,4 +31,4 @@ function Pen(props) {
         </Button>
     );
 }
-export default Pen;
+export default Stop;

@@ -6,6 +6,8 @@ import RobotMessages from '../components/RobotMessages';
 import MarkPlan from '../components/MarkPlan';
 import ControlButton from '../components/ControlButton';
 import StartJob from '../components/StartJob';
+import Camera from '../components/Camera';
+
 
 
 function Worker(props) {
@@ -101,6 +103,7 @@ React.useEffect(() => {
           <StartJob job={job} state={state} data={jobs[job]}/>
         </Stack>
 
+        <Camera></Camera>
       </Stack>
     </div>
   );
