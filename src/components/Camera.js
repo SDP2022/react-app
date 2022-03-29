@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Image from 'material-ui-image'
+import CameraInternal from '../components/CameraInternal';
+
 
 function Camera(props) {
 
@@ -25,9 +26,10 @@ function Camera(props) {
 
 
     return (
-        <Image
-        src={img}
-        />
+        <CameraInternal
+        img={img}>
+
+        </CameraInternal>
     );
 }
 export default Camera;
