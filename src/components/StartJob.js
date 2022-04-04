@@ -24,7 +24,7 @@ function StartJob(props) {
     });
 
     var pause_message = new ROSLIBR.Message({
-        as_state: 3
+        as_state: 4
     })
 
     var resume_message = new ROSLIBR.Message({
