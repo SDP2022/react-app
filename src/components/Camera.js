@@ -4,7 +4,7 @@ import CameraInternal from '../components/CameraInternal';
 
 function Camera(props) {
 
-    const [img, setImg] = useState("https://cataas.com/cat")
+    const [img, setImg] = useState("https://cataas.com/cat/says/Still%20connecting%20to%20the%20PaintBOT%20live%20feed%20%0A%20%20Enjoy%20this%20random%20cat%20in%20the%20meantime%0A%20Refresh%20to%20try%20again?color=turquoise")
 
     //only show animations when loading
     var spinner = true;

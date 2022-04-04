@@ -4,6 +4,7 @@ import Pen from '../components/Pen';
 import Stop from '../components/Stop';
 import Controller from '../components/Controller';
 import RobotMessages from '../components/RobotMessages';
+import Camera from '../components/Camera';
 
 
 
@@ -26,7 +27,7 @@ function ManualControl(props) {
             PaintED - Manual Control
           </Typography>
 
-          <Stack justifyContent="space-evenly"  spacing={5}  sx={{pb: 15 }}>
+          <Stack justifyContent="space-evenly"  spacing={5}  sx={{}}>
             <RobotMessages/>
 
             <Stack justifyContent="space-evenly" direction="row" spacing={2}>
@@ -41,6 +42,9 @@ function ManualControl(props) {
 
               </Stack>
             </Stack>
+
+            <Camera></Camera>
+
           </Stack>
 
 

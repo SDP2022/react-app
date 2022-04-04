@@ -26,7 +26,7 @@ function Pen(props) {
     })
 
     const handler = (event) => {
-
+      console.log(request)
       pen_client.callService(request, function(result) {
         console.log(result.status)
       })

@@ -4,37 +4,33 @@ import { Joystick } from 'react-joystick-component';
 
 function Controller(props) {
 
-    const [move, setMove] = useState();
 
-    useEffect( () => {
-        var ROSLIBR = window.ROSLIB;
+    var ROSLIBR = window.ROSLIB;
 
-        var ros = new ROSLIBR.Ros({
-            url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
-        });
+    var ros = new ROSLIBR.Ros({
+        url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
+    });
+
+    var move_publisher = new ROSLIBR.Topic({
+        ros : ros,
+        name : "/cmd_vel",
+        messageType : 'geometry_msgs/Twist'
+    });
     
-        var move_publisher = new ROSLIBR.Topic({
-            ros : ros,
-            name : "/cmd_vel",
-            messageType : 'geometry_msgs/Twist'
-        });
-        
-    
-        setMove((linear, angular) => {
-            var twist = new ROSLIBR.Message({
-                linear: {
-                    x: linear,
-                    y: 0,
-                    z: 0
-                },
-                angular: {
-                    x: 0,
-                    y: 0,
-                    z: angular
-                }
-            });
-            move_publisher.publish(twist)
-        })
+    var move = ((linear, angular) => {
+        var twist = new ROSLIBR.Message({
+            linear: {
+                x: linear,
+                y: 0,
+                z: 0
+            },
+            angular: {
+                x: 0,
+                y: 0,
+                z: angular
+            }
+        });    
+        move_publisher.publish(twist)
     })
 
     const test = (event) => {
