@@ -52,7 +52,7 @@ function StartJob(props) {
         console.log(resume_message)
     }
 
-    var disabled = (props.state === 1 || props.state === 5 ||  props.job === '') //can't start if not ready
+    var disabled = (props.state === 1  ||  props.job === '') //can't start if not ready
 
 
     if (props.state == 0 || props.state === 5) { //waiting

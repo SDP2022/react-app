@@ -22,35 +22,6 @@ const [state, setState] = React.useState(0);
 
 //todo move socket up here
 
- var ROSLIBR = window.ROSLIB;
-
- var ros = new ROSLIBR.Ros({
-  url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
-});
-
-
-var state_client = new ROSLIBR.Service({
-  ros: ros,
-  name: '/job_status_service',
-  serviceType: 'JobStatusCommand'
-})
-
-var request = new ROSLIBR.ServiceRequest({
-  status : true
-})
-
-
-var state_listener = new ROSLIBR.Topic({
-  ros : ros,
-  name : "state",
-  messageType : 'painted/State'
-});
-
-state_listener.subscribe(function(result) {
-  setState(result.as_state)
-})
-
-
 //fetches job data from firebase
 React.useEffect(() => {
   fetch('https://sdp2022-7afa1-default-rtdb.europe-west1.firebasedatabase.app/jobs.json')
@@ -64,6 +35,34 @@ React.useEffect(() => {
 
 //gets state
 React.useEffect(() => {
+    var ROSLIBR = window.ROSLIB;
+
+    var ros = new ROSLIBR.Ros({
+    url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
+  });
+  
+  
+  var state_client = new ROSLIBR.Service({
+    ros: ros,
+    name: '/job_status_service',
+    serviceType: 'JobStatusCommand'
+  })
+  
+  var request = new ROSLIBR.ServiceRequest({
+    status : true
+  })
+  
+  
+  var state_listener = new ROSLIBR.Topic({
+    ros : ros,
+    name : "state",
+    messageType : 'painted/State'
+  });
+  
+  state_listener.subscribe(function(result) {
+    setState(result.as_state)
+  })
+
   state_client.callService(request, function(result) {
     if (result.job_id !== "-1") {
       setJob(result.job_id)
@@ -73,7 +72,7 @@ React.useEffect(() => {
     console.log(result.job_id)
 
     })
-})
+},[])
 
     return (
 

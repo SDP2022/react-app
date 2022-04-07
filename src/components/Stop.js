@@ -9,19 +9,33 @@ function Stop(props) {
       url: process.env.REACT_APP_ROSBRIDGE_HOSTNAME
   });
 
-  var warning_client = new ROSLIBR.Service({
+  var buzzer_client = new ROSLIBR.Service({
     ros: ros,
     name: '/buzzer_service',
     serviceType: 'BuzzerCommand'
   })
 
-  var request = new ROSLIBR.ServiceRequest({
+  var buzzer_request = new ROSLIBR.ServiceRequest({
     beep : 1
+  })
+
+  var led_client = new ROSLIBR.Service({
+    ros: ros,
+    name: '/led_service',
+    serviceType: 'LEDCommand'
+  })
+
+  var led_request = new ROSLIBR.ServiceRequest({
+    led : "red"
   })
 
   const handler = (event) => {
 
-    warning_client.callService(request, function(result) {
+    buzzer_client.callService(buzzer_request, function(result) {
+      console.log(result.status)
+    })
+
+    led_client.callService(led_request, function(result) {
       console.log(result.status)
     })
   }

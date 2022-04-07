@@ -7,7 +7,7 @@ import ControlCameraIcon from '@mui/icons-material/ControlCamera';
 function StartJob(props) {
 
     const handler = (event) => {
-        props.setStarted(false)
+        // props.setStarted(false)
         window.open('/ManualControl')
     }
 
