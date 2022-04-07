@@ -52,22 +52,23 @@ function StartJob(props) {
         console.log(resume_message)
     }
 
-    var disabled = (props.state === 1  ||  props.job === '') //can't start if not ready
+    var disabled = (props.state === 1  ||  props.job === '' || props.state === 4) //can't start if not ready
 
+    console.log(props.state)
 
-    if (props.state == 0 || props.state === 5) { //waiting
+    if (props.state === 0 || props.state === 5) { //waiting
         return (
             <Button variant="contained" onClick={start_handler} color={'success'} startIcon={<PlayCircleOutlineIcon/>} disabled={disabled} component="span"  fullWidth>
               Begin
             </Button>
         ); 
-    } else if (props.state == 2 || props.state == 1) { //running
+    } else if (props.state === 2 || props.state === 1) { //running
         return (
             <Button variant="contained" onClick={pause_handler} color={'warning'} startIcon={<PauseCircleIcon/>} disabled={disabled} component="span"  fullWidth>
               Pause
             </Button>
         ); 
-    } else if (props.state == 3) { //paused
+    } else if (props.state === 3 || props.state === 4) { //paused
         return (
             <Button variant="contained" onClick={resume_handler} color={'success'} startIcon={<PlayCircleOutlineIcon/>} disabled={disabled} component="span"  fullWidth>
               Resume

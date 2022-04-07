@@ -17,7 +17,6 @@ export default function MediaCard(props) {
     }
     const nextStep = () => { 
         stepCount === maxSteps-1 ? setStepCount(maxSteps-1) : setStepCount(stepCount+1)
-        console.log(stepCount);
     }
 
   return (
