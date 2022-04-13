@@ -24,6 +24,7 @@ Connects with Firebase for user information, and makes a web socket connection f
 - Status messages displayed on screen
 - Manual control to move robot and pen, sound the emergency alert system (LEDs and annoying buzzer)
 - Tutorial page if you seek to learn more
+- Cat API implemented so that if live camera is down, you see a cute cat instead :)
 - Cross platform
 
 
@@ -49,13 +50,13 @@ Connects with Firebase for user information, and makes a web socket connection f
 Clone the project
 
 ```bash
-  git clone <project url>
+  git clone $project-url
 ```
 
 Go to the project directory
 
 ```bash
-  cd <project name>
+  cd $project-name
 ```
 
 Install dependencies
