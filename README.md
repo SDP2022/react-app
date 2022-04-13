@@ -1,70 +1,87 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![PaintED Logo](https://cdn.discordapp.com/attachments/932588913636282371/958905784345985064/largelogo_copy.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+# PaintED React Web App
 
-### `npm start`
+React.js web app which is used to control the PaintED PaintBOT. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Uses the Material UI library for the user interface design.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+As you may be able to tell, I wrote this while learning JS/React on the fly..
 
-### `npm test`
+Connects with Firebase for user information, and makes a web socket connection for connection to the robot (see .env)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React router to implement pages
+- Planner mode to (re)upload, preview, and delete plans
+- Worker mode to preview and execute a chosen plan
+- Ability to pause and resume execution of a plan
+- View a live camera feed of the robot
+- Status messages displayed on screen
+- Manual control to move robot and pen, sound the emergency alert system (LEDs and annoying buzzer)
+- Tutorial page if you seek to learn more
+- Cross platform
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![App Screenshot](https://cdn.discordapp.com/attachments/953687424192639097/960944965435940914/Screenshot_2022-04-05_at_17.13.57.png)
+![App Screenshot](https://cdn.discordapp.com/attachments/953687424192639097/960944964316045442/Screenshot_2022-04-05_at_17.14.18.png)
+![App Screenshot](https://cdn.discordapp.com/attachments/953687424192639097/960942315856334858/Screenshot_at_2022-04-05_17-17-32.png)
+![App Screenshot](https://cdn.discordapp.com/attachments/953687424192639097/960942315613061120/Screenshot_at_2022-04-05_17-15-10.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Environment Variables
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`REACT_APP_FIREBASE_URL` - The Firebase instance will be killed when SDP is done, if for some reason you want to view this project then make your own with the same schema including a stringified geoJSON plan.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`REACT_APP_ROSBRIDGE_HOSTNAME` - Robot web socket location with port
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Run Locally
 
-### Analyzing the Bundle Size
+Clone the project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+  git clone <project url>
+```
 
-### Making a Progressive Web App
+Go to the project directory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+  cd <project name>
+```
 
-### Advanced Configuration
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+  npm install
+```
 
-### Deployment
+Start the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+  npm run
+```
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Authors
+
+- [@adeel567](https://www.github.com/adeel567)
+
+
+## Acknowledgements
+
+ - [Fuel when developing](https://www.tesco.com/groceries/en-GB/shop/fresh-food/chilled-soup-sandwiches-and-salad-pots/pound3-meal-deal)
+
+
+## Feedback
+
+If you have any feedback, please don't reach out to us as this will not be maintained after industry day.
+
